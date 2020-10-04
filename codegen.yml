@@ -1,0 +1,40 @@
+generates:
+  ./src/accountService/domain/types.d.ts:
+    schema: ./src/accountService/schema.graphql
+    plugins:
+      - typescript
+      - typescript-resolvers
+    config:
+      federation: true
+      useIndexSignature: true
+      noSchemaStitching: true
+
+  ./src/productService/domain/types.d.ts:
+    schema: ./src/productService/schema.graphql
+    plugins:
+      - typescript
+      - typescript-resolvers
+    config:
+      federation: true
+      useIndexSignature: true
+      noSchemaStitching: true
+
+  ./src/reviewService/domain/types.d.ts:
+    schema: ./src/reviewService/schema.graphql
+    plugins:
+      - typescript
+      - typescript-resolvers
+    config:
+      federation: true
+      useIndexSignature: true
+      noSchemaStitching: true
+
+  ./src/inventoryService/domain/types.d.ts:
+    schema: ./src/inventoryService/schema.graphql
+    plugins:
+      - typescript
+      - typescript-resolvers
+    config:
+      federation: true
+      useIndexSignature: true
+      noSchemaStitching: true
