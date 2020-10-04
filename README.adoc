@@ -1,0 +1,5 @@
+= Example for Apollo Federation with GraphQL Code Generator
+
+- Apollo Federation: https://www.apollographql.com/docs/federation/
+- GraphQL Code Generator: https://graphql-code-generator.com/
+- GraphQL Tools: https://www.graphql-tools.com/
