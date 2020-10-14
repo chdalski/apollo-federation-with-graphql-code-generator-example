@@ -1,6 +1,6 @@
 generates:
-  ./src/accountService/domain/types.d.ts:
-    schema: ./src/accountService/schema.graphql
+  ./src/service/accountService/domain/types.d.ts:
+    schema: ./src/service/accountService/schema.graphql
     plugins:
       - typescript
       - typescript-resolvers
@@ -9,8 +9,8 @@ generates:
       useIndexSignature: true
       noSchemaStitching: true
 
-  ./src/productService/domain/types.d.ts:
-    schema: ./src/productService/schema.graphql
+  ./src/service/productService/domain/types.d.ts:
+    schema: ./src/service/productService/schema.graphql
     plugins:
       - typescript
       - typescript-resolvers
@@ -19,8 +19,8 @@ generates:
       useIndexSignature: true
       noSchemaStitching: true
 
-  ./src/reviewService/domain/types.d.ts:
-    schema: ./src/reviewService/schema.graphql
+  ./src/service/reviewService/domain/types.d.ts:
+    schema: ./src/service/reviewService/schema.graphql
     plugins:
       - typescript
       - typescript-resolvers
@@ -29,8 +29,8 @@ generates:
       useIndexSignature: true
       noSchemaStitching: true
 
-  ./src/inventoryService/domain/types.d.ts:
-    schema: ./src/inventoryService/schema.graphql
+  ./src/service/inventoryService/domain/types.d.ts:
+    schema: ./src/service/inventoryService/schema.graphql
     plugins:
       - typescript
       - typescript-resolvers
