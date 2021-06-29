@@ -1,6 +1,8 @@
 import { GraphQLResolveInfo } from 'graphql';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -15,6 +17,12 @@ export type Scalars = {
 
 
 
+export type Product = {
+  __typename?: 'Product';
+  upc: Scalars['String'];
+  reviews?: Maybe<Array<Maybe<Review>>>;
+};
+
 export type Review = {
   __typename?: 'Review';
   id: Scalars['ID'];
@@ -27,12 +35,6 @@ export type User = {
   __typename?: 'User';
   id: Scalars['ID'];
   username?: Maybe<Scalars['String']>;
-  reviews?: Maybe<Array<Maybe<Review>>>;
-};
-
-export type Product = {
-  __typename?: 'Product';
-  upc: Scalars['String'];
   reviews?: Maybe<Array<Maybe<Review>>>;
 };
 
@@ -114,22 +116,29 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = ResolversObject<{
+  Product: ResolverTypeWrapper<Product>;
+  String: ResolverTypeWrapper<Scalars['String']>;
   Review: ResolverTypeWrapper<Review>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
-  String: ResolverTypeWrapper<Scalars['String']>;
   User: ResolverTypeWrapper<User>;
-  Product: ResolverTypeWrapper<Product>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 }>;
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = ResolversObject<{
+  Product: Product;
+  String: Scalars['String'];
   Review: Review;
   ID: Scalars['ID'];
-  String: Scalars['String'];
   User: User;
-  Product: Product;
   Boolean: Scalars['Boolean'];
+}>;
+
+export type ProductResolvers<ContextType = any, ParentType extends ResolversParentTypes['Product'] = ResolversParentTypes['Product']> = ResolversObject<{
+  __resolveReference?: ReferenceResolver<Maybe<ResolversTypes['Product']>, { __typename: 'Product' } & GraphQLRecursivePick<ParentType, {"upc":true}>, ContextType>;
+
+  reviews?: Resolver<Maybe<Array<Maybe<ResolversTypes['Review']>>>, { __typename: 'Product' } & GraphQLRecursivePick<ParentType, {"upc":true}>, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
 export type ReviewResolvers<ContextType = any, ParentType extends ResolversParentTypes['Review'] = ResolversParentTypes['Review']> = ResolversObject<{
@@ -149,17 +158,10 @@ export type UserResolvers<ContextType = any, ParentType extends ResolversParentT
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
-export type ProductResolvers<ContextType = any, ParentType extends ResolversParentTypes['Product'] = ResolversParentTypes['Product']> = ResolversObject<{
-  __resolveReference?: ReferenceResolver<Maybe<ResolversTypes['Product']>, { __typename: 'Product' } & GraphQLRecursivePick<ParentType, {"upc":true}>, ContextType>;
-
-  reviews?: Resolver<Maybe<Array<Maybe<ResolversTypes['Review']>>>, { __typename: 'Product' } & GraphQLRecursivePick<ParentType, {"upc":true}>, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-}>;
-
 export type Resolvers<ContextType = any> = ResolversObject<{
+  Product?: ProductResolvers<ContextType>;
   Review?: ReviewResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
-  Product?: ProductResolvers<ContextType>;
 }>;
 
 
